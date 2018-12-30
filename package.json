@@ -17,7 +17,7 @@
     "version": "npm run format && git add -A lib",
     "postversion": "git push && git push --tags",
     "doc-gen": "typedoc --out doc --theme minimal `find test -name '*.ts' -not -path '*test*' -not -path '*dist*'`",
-    "sample": "ts-node examples/chain_sample_1.ts && ts-node examples/chain_sample_2.ts"
+    "sample": "ts-node examples/chain_sample_1.ts"
   },
   "author": "Ruwan Geeganage",
   "license": "MIT",

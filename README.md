@@ -17,7 +17,7 @@ const { alls } = require('alls');
 #### Return value for ```Resolve```
 ```js
 {
-	status: 'fulfilled',
+    status: 'fulfilled',
     value: <promise return value>
 }
 ```
@@ -25,7 +25,7 @@ const { alls } = require('alls');
 #### Return value for ```Reject```
 ```js
 {
-	status: 'rejected',
+    status: 'rejected',
     reason: <Error thrown by promise>
 }
 ```

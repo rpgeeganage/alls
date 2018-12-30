@@ -65,10 +65,11 @@
     "instrument": true
   },
   "keywords": [
-    "Array",
+    "Promise",
     "Async/Await",
-    "async/await",
-    "array",
-    "ES2017"
+    "Promise.all",
+    "Promise all settle",
+    "all settled",
+    "allSettled"
   ]
 }

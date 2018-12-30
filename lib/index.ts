@@ -41,6 +41,12 @@ class Alls {
     return new Alls(promises);
   }
 
+  /**
+   * Process promise list
+   *
+   * @returns {Promise<ReturnValue[]>}
+   * @memberof Alls
+   */
   process(): Promise<ReturnValue[]> {
     const promisesList = this.promises.map((p) => {
       if (!p || p.toString() !== '[object Promise]') {

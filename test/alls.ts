@@ -10,7 +10,7 @@ describe('alls', () => {
       Promise.resolve(3)
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'fulfilled', value: 1 },
       { state: 'fulfilled', value: 2 },
       { state: 'fulfilled', value: 3 }
@@ -28,7 +28,7 @@ describe('alls', () => {
       Promise.reject(error3)
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'rejected', reason: error1 },
       { state: 'rejected', reason: error2 },
       { state: 'rejected', reason: error3 }
@@ -49,7 +49,7 @@ describe('alls', () => {
       Promise.reject(error3)
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'fulfilled', value: 1 },
       { state: 'rejected', reason: error1 },
       { state: 'fulfilled', value: 2 },
@@ -66,7 +66,7 @@ describe('alls', () => {
       'string3' as any
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'fulfilled', value: 'string1' },
       { state: 'fulfilled', value: 'string2' },
       { state: 'fulfilled', value: 'string3' }
@@ -76,7 +76,7 @@ describe('alls', () => {
   it('should process for falsy values', async () => {
     const results = await alls([null, false as any, 0, undefined, '']);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'fulfilled', value: null },
       { state: 'fulfilled', value: false },
       { state: 'fulfilled', value: 0 },
@@ -88,7 +88,7 @@ describe('alls', () => {
   it('should process for primitive values', async () => {
     const results = await alls([1 as any, true as any, 'test' as any, 1.5]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       {
         state: 'fulfilled',
         value: 1
@@ -121,7 +121,7 @@ describe('alls', () => {
       } as any
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       {
         state: 'fulfilled',
         value: {
@@ -156,7 +156,7 @@ describe('alls', () => {
       })
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'fulfilled', value: 10 },
       { state: 'fulfilled', value: 20 },
       { state: 'fulfilled', value: 30 }
@@ -176,7 +176,7 @@ describe('alls', () => {
       })
     ])
       .then((results) => {
-        should(results).containDeepOrdered([
+        should(results).deepEqual([
           { state: 'fulfilled', value: 10 },
           { state: 'fulfilled', value: 20 },
           { state: 'fulfilled', value: 30 }
@@ -197,18 +197,23 @@ describe('alls', () => {
         new Promise((resolve) => {
           setTimeout(() => resolve(20), 100);
         }))(),
-      (() => 30)() as any,
+      (() =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => reject(30), 100);
+        }))(),
+      (() => 40)() as any,
       (() =>
         new Promise((resolve) => {
-          setTimeout(() => resolve(40), 100);
+          setTimeout(() => resolve(50), 100);
         }))()
     ]);
 
-    should(results).containDeepOrdered([
+    should(results).deepEqual([
       { state: 'fulfilled', value: 10 },
       { state: 'fulfilled', value: 20 },
-      { state: 'fulfilled', value: 30 },
-      { state: 'fulfilled', value: 40 }
+      { state: 'rejected', reason: 30 },
+      { state: 'fulfilled', value: 40 },
+      { state: 'fulfilled', value: 50 }
     ]);
   });
 });

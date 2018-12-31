@@ -163,6 +163,55 @@ describe('alls', () => {
     ]);
   });
 
+  it('should maintain the order even with errors', async () => {
+    const results = await alls([
+      new Promise((resolve) => {
+        setTimeout(() => resolve(10), 600);
+      }),
+      new Promise((resolve) => {
+        setTimeout(() => resolve(20), 200);
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => reject(30), 800);
+      }),
+      new Promise((resolve) => {
+        setTimeout(() => resolve(40), 900);
+      })
+    ]);
+
+    should(results).deepEqual([
+      { state: 'fulfilled', value: 10 },
+      { state: 'fulfilled', value: 20 },
+      { state: 'rejected', reason: 30 },
+      { state: 'fulfilled', value: 40 }
+    ]);
+  });
+
+  it('should maintain the order even with async errors', async () => {
+    const error = new Error('error');
+
+    const results = await alls([
+      new Promise((resolve) => {
+        setTimeout(() => resolve(10), 600);
+      }),
+      new Promise((resolve) => {
+        setTimeout(() => resolve(20), 200);
+      }),
+      (async () => {
+        throw error;
+      })(),
+      new Promise((resolve) => {
+        setTimeout(() => resolve(40), 900);
+      })
+    ]);
+
+    should(results).deepEqual([
+      { state: 'fulfilled', value: 10 },
+      { state: 'fulfilled', value: 20 },
+      { state: 'rejected', reason: error },
+      { state: 'fulfilled', value: 40 }
+    ]);
+  });
   it('should work with good old promise call back', (done) => {
     alls([
       new Promise((resolve) => {

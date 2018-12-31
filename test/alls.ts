@@ -211,6 +211,16 @@ describe('alls', () => {
       .catch(done);
   });
 
+  it('should work with a empty array', (done) => {
+    alls([])
+      .then((results) => {
+        should(results).deepEqual([]);
+
+        done();
+      })
+      .catch(done);
+  });
+
   it('should handle both promise functions and none promise functions', async () => {
     const results = await alls([
       (() =>

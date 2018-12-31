@@ -15,8 +15,8 @@
 ```js
 const { alls } = require('alls');
 
-const results = alls([promise1, promise2, .....promiseN]);
-// structure of result
+const results = await alls([promise1, promise2, .....promiseN]);
+// structure of results
 [
   {
     status: 'fulfilled',
@@ -25,7 +25,7 @@ const results = alls([promise1, promise2, .....promiseN]);
   {
     status: 'rejected',
     reason: error-from-promise2
-  },
+  }
 ...
   {
     status: 'fulfilled',

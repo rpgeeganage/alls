@@ -187,6 +187,30 @@ describe('alls', () => {
       .catch(done);
   });
 
+  it('should work with async/await', (done) => {
+    const error = new Error('async/await error');
+
+    alls([
+      (async () => 10)(),
+      (async () => 20)(),
+      (async () => {
+        throw error;
+      })(),
+      (async () => 30)()
+    ])
+      .then((results) => {
+        should(results).deepEqual([
+          { state: 'fulfilled', value: 10 },
+          { state: 'fulfilled', value: 20 },
+          { state: 'rejected', reason: error },
+          { state: 'fulfilled', value: 30 }
+        ]);
+
+        done();
+      })
+      .catch(done);
+  });
+
   it('should handle both promise functions and none promise functions', async () => {
     const results = await alls([
       (() =>

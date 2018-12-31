@@ -9,6 +9,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/66cd49a28da26d6f51f1/maintainability)](https://codeclimate.com/github/rpgeeganage/alls/maintainability)
 ### Just another library with the sole purpose of waiting till all promises to complete. Nothing more, Nothing less.
 
+#### (Since, The [```Promise.all()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method returns a single Promise that resolves when all of the promises passed as an iterable have resolved or when the iterable contains no promises. It rejects with the reason of the first promise that rejects.)
+
 ### TypeScript Doc: [https://rpgeeganage.github.io/alls/doc/](https://rpgeeganage.github.io/alls/doc/)
 
 ### Basic Usage:

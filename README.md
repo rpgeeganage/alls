@@ -1,5 +1,6 @@
 # alls (All Settled) - wait till all the promises settled
 [![License](https://img.shields.io/github/license/rpgeeganage/alls.svg)](https://github.com/rpgeeganage/alls)
+[![Version](https://img.shields.io/npm/v/alls.svg)](https://img.shields.io/npm/v/alls.svg)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/rpgeeganage/alls.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rpgeeganage/alls/context:javascript)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e8fc6d45ba07412a975fb823379cdbdf)](https://www.codacy.com/app/rpgeeganage/alls?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rpgeeganage/alls&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/e8fc6d45ba07412a975fb823379cdbdf)](https://www.codacy.com/app/rpgeeganage/alls?utm_source=github.com&utm_medium=referral&utm_content=rpgeeganage/alls&utm_campaign=Badge_Coverage)

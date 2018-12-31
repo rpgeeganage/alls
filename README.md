@@ -14,6 +14,25 @@
 ### Basic Usage:
 ```js
 const { alls } = require('alls');
+
+const results = alls([promise1, promise2, .....promiseN]);
+// structure of result
+[
+ {
+   status: 'fulfilled',
+   value: promise1-value
+ },
+ {
+   status: 'rejected',
+   reason: error-from-promise2
+ },
+ ...
+ ,
+ {
+   status: 'fulfilled',
+   value: promiseN-value
+ }
+]
 ```
 
 #### Return value for ```Resolve```

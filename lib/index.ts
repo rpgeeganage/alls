@@ -49,7 +49,7 @@ class Alls {
    */
   process(): Promise<ReturnValue[]> {
     const promisesList = this.promises.map((p) => {
-      if (!p || p.toString() !== '[object Promise]') {
+      if (!this.isPromise(p)) {
         return {
           state: 'fulfilled',
           value: p
@@ -76,6 +76,25 @@ class Alls {
     });
 
     return Promise.all(promisesList as Promise<any>[]);
+  }
+
+  /**
+   * Check given object is a promise
+   *
+   * @returns {boolean}
+   * @memberof Alls
+   */
+  private isPromise(p: any) {
+    if (!p) {
+      return false;
+    }
+
+    if (p.toString() === '[object Promise]') {
+      return true;
+    }
+
+    // For none native promises
+    return p && typeof p['then'] === 'function';
   }
 }
 

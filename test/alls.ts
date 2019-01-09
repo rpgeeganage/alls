@@ -1,4 +1,6 @@
+import * as B from 'bluebird';
 import 'mocha';
+import * as Q from 'q';
 import * as should from 'should';
 import { alls } from '../lib';
 
@@ -212,6 +214,7 @@ describe('alls', () => {
       { state: 'fulfilled', value: 40 }
     ]);
   });
+
   it('should work with good old promise call back', (done) => {
     alls([
       new Promise((resolve) => {
@@ -297,6 +300,20 @@ describe('alls', () => {
       { state: 'rejected', reason: 30 },
       { state: 'fulfilled', value: 40 },
       { state: 'fulfilled', value: 50 }
+    ]);
+  });
+
+  it('should handle promises from 3rd party libraries like Q, BlueBird', async () => {
+    const results = await alls([
+      (async () => 'string1')(),
+      (() => new B((resolve) => resolve('string2')))(),
+      Q.Promise((resolve) => resolve('string3')) as any
+    ]);
+
+    should(results).deepEqual([
+      { state: 'fulfilled', value: 'string1' },
+      { state: 'fulfilled', value: 'string2' },
+      { state: 'fulfilled', value: 'string3' }
     ]);
   });
 });

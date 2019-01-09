@@ -3,7 +3,7 @@
   "description": "Just another library with the sole purpose of waiting till all promises to complete.; Nothing more, Nothing less.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "version": "1.0.5",
+  "version": "1.0.4",
   "scripts": {
     "pretest": "npm run build",
     "test": "nyc mocha",

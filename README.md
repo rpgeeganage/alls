@@ -1,4 +1,4 @@
-# alls (All Settled) - wait till all the promises settled
+# alls (All Settled) - wait till all the promises are settled
 [![License](https://img.shields.io/github/license/rpgeeganage/alls.svg)](https://github.com/rpgeeganage/alls)
 [![Version](https://img.shields.io/npm/v/alls.svg)](https://img.shields.io/npm/v/alls.svg)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/rpgeeganage/alls.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rpgeeganage/alls/context:javascript)
@@ -7,9 +7,9 @@
 [![Build Status](https://travis-ci.org/rpgeeganage/alls.svg?branch=master)](https://travis-ci.org/rpgeeganage/alls)
 [![Known Vulnerabilities](https://snyk.io/test/github/rpgeeganage/alls/badge.svg?targetFile=package.json)](https://snyk.io/test/github/rpgeeganage/alls?targetFile=package.json)
 [![Maintainability](https://api.codeclimate.com/v1/badges/66cd49a28da26d6f51f1/maintainability)](https://codeclimate.com/github/rpgeeganage/alls/maintainability)
-### Just another library with the sole purpose of waiting till all promises to complete. Nothing more, Nothing less.
+### Just another library with the sole purpose of waiting till all the promises are fulfilled. Nothing more, Nothing less.
 
-#### (Since, The [```Promise.all()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method returns a single Promise that resolves when all of the promises passed as an iterable have resolved or when the iterable contains no promises. It rejects with the reason of the first promise that rejects.)
+#### (The [```Promise.all()```](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method returns a single promise that resolves when all of the promises passed as an iterable have been resolved or when the iterable contains no promises. Also, it rejects with the reason of the first promise that rejects.)
 
 ### TypeScript Doc: [https://rpgeeganage.github.io/alls/doc/](https://rpgeeganage.github.io/alls/doc/)
 
